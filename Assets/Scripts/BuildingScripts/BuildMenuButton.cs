@@ -21,6 +21,13 @@ public class BuildMenuButton : MonoBehaviour {
 
         itemNameText.text = GetComponentInParent<BuildingMaster>().itemPrefabs[itemIndexToBuild].name;
         itemCostText.text = GetComponentInParent<BuildingMaster>().itemPrefabs[itemIndexToBuild].GetComponent<BuildableObject>().buildCost.ToString() + "g";
+
+        //Workaround for colors over textures, temporary
+        if (i > 2)
+        {
+            itemNameText.color = Color.white;
+            itemCostText.color = Color.white;
+        }
     }
     
 }

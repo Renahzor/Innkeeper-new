@@ -207,4 +207,9 @@ public class FloorBuilderScript : MonoBehaviour {
         //checks if the cursor is over an object on the UI layer (5)
         return results.Where(r => r.gameObject.layer == 5).Count() > 0;
     }
+
+    public List<Sprite> GetFloorSprites()
+    {
+        return floorSprites;
+    }
 }

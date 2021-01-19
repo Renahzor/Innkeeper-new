@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildingMaster : MonoBehaviour {
 
@@ -63,6 +64,7 @@ public class BuildingMaster : MonoBehaviour {
                 var button = Instantiate(buttonPrefab);
                 button.transform.SetParent(wallItemParent.transform, false);
                 button.GetComponent<BuildMenuButton>().SetupButton(i);
+                button.GetComponent<Button>().GetComponent<Image>().sprite = itemPrefabs[i].gameObject.GetComponent<SpriteRenderer>().sprite;
                 wallItemParent.SetActive(panelState);
             }
 
