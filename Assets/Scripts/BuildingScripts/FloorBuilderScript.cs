@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using System.Linq;
 
 public class FloorBuilderScript : MonoBehaviour {
 
@@ -27,8 +29,7 @@ public class FloorBuilderScript : MonoBehaviour {
     {
         selectedSprite = floorSprites[0];
         storedTile = currentTile;
-        tempStoredSprite = RetrieveSprite(currentTile);
-
+        
         for (int x = -6; x <= 7; x++)
             for (int y = 0; y <= 7; y++)
             {
@@ -41,6 +42,8 @@ public class FloorBuilderScript : MonoBehaviour {
             {
                 SetSprite(new Vector2(x, y), pathSprites[0]);
             }
+
+        tempStoredSprite = RetrieveSprite(currentTile);
     }
 
     void Update()
@@ -83,7 +86,7 @@ public class FloorBuilderScript : MonoBehaviour {
                 storedTile = currentTile;
             }
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && !CursorOverUI())
             {
 
                 if (selectedFloor.GetComponent<BuildableObject>().buildCost > Player.Instance.playerGold)
@@ -195,5 +198,13 @@ public class FloorBuilderScript : MonoBehaviour {
         }
     }
 
-
+    private bool CursorOverUI()
+    {
+        var eventData = new PointerEventData(EventSystem.current);
+        eventData.position = Input.mousePosition;
+        var results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
+        //checks if the cursor is over an object on the UI layer (5)
+        return results.Where(r => r.gameObject.layer == 5).Count() > 0;
+    }
 }
