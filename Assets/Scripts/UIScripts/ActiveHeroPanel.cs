@@ -78,7 +78,7 @@ public class ActiveHeroPanel : MonoBehaviour {
     }
 
     //workaround method for seeding the hero panel on initialization
-    public Adventurer ReturnHeroByndex(int i)
+    public Adventurer ReturnHeroByIndex(int i)
     {
         int j = 0;
         foreach (KeyValuePair<Adventurer, GameObject> kvp in activeHeroes)

@@ -50,6 +50,7 @@ public class QuestWindowController : MonoBehaviour
     public void UpdateLocationBox(int index)
     {
         questLocationDropdown.itemText.text = questManager.questLocationsTextList[index];
+        questObjectiveDropdown.itemText.text = questManager.questObjectivesTextList[0];
     }
 
     public void UpdateObjectiveBox(int index)

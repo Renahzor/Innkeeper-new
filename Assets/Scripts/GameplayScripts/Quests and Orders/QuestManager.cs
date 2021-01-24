@@ -81,8 +81,23 @@ public class QuestManager : MonoBehaviour {
 
     public void ScoutedLocationComplete(int level, float distance)
     {
+        
         int locationIndex = Random.Range(0, locations.Count);
         int objectiveIndex = Random.Range(0, objectives.Count);
+
+        if (locations.Count != 0)
+        {
+            foreach (LocationScript ls in activeLocations)
+            {
+                if (ls.locationName == locations[locationIndex].locationName)
+                {
+                    activeLocations[locationIndex].AddEnemyToLocation(objectiveIndex);
+                    questObjectivesTextList.Add(objectives[objectiveIndex].objectiveDescription);
+                    questWindow.UpdateDropdownText(questWindow.questObjectiveDropdown, questObjectivesTextList);
+                    return;
+                }
+            }
+        }
 
         locations[locationIndex].LocationSetup(level, Random.Range(1, 100), distance, objectiveIndex);
 

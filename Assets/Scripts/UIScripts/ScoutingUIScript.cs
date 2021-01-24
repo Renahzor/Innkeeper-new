@@ -73,6 +73,8 @@ public class ScoutingUIScript : MonoBehaviour {
         GameMaster.Instance.SendGameMessage("Spent " + rewardValue + "g to send " + heroDropdown.GetComponentInChildren<Text>().text + " on a scouting mission.");
         Player.Instance.playerGold -= rewardValue;
         scoutingMissionsCompleted++;
+
+        UpdateDropdowns(activeScoutHeroes);
     }
 
 }

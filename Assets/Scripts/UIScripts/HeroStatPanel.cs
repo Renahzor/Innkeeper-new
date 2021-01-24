@@ -23,7 +23,7 @@ public class HeroStatPanel : MonoBehaviour {
         activeHero = null;
         stats = null;
         needs = null;
-        SetActiveHero(GameObject.Find("ActiveHeroPanel").GetComponent<ActiveHeroPanel>().ReturnHeroByndex(0));
+        SetActiveHero(GameObject.Find("ActiveHeroPanel").GetComponent<ActiveHeroPanel>().ReturnHeroByIndex(0));
     }
 
     void Update()
