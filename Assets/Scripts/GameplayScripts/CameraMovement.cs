@@ -35,25 +35,49 @@ public class CameraMovement : MonoBehaviour {
 
         if (Input.mousePosition.x <= 25.0)
         {
-            newPosition = new Vector3(mainCamera.transform.position.x - moveSpeedMultiplier * 0.25f, mainCamera.transform.position.y, mainCamera.transform.position.z);
+            float scrollSpeedTmp = 0.5f;
+            if (Input.mousePosition.x > 1.0)
+            {
+                scrollSpeedTmp = (float)((1.0 / Input.mousePosition.x) * moveSpeedMultiplier);
+            }
+
+            newPosition = new Vector3(mainCamera.transform.position.x - moveSpeedMultiplier * scrollSpeedTmp, mainCamera.transform.position.y, mainCamera.transform.position.z);
             mainCamera.transform.position = newPosition;
         }
 
         if (Input.mousePosition.x >= mainCamera.pixelWidth - 25.0) 
         {
-            newPosition = new Vector3(mainCamera.transform.position.x + moveSpeedMultiplier * 0.25f, mainCamera.transform.position.y, mainCamera.transform.position.z);
+            float scrollSpeedTmp = 0.5f;
+            if (Input.mousePosition.x < mainCamera.pixelWidth - 1.0)
+            {
+                scrollSpeedTmp = (float)(1.0 / (mainCamera.pixelWidth - Input.mousePosition.x) * moveSpeedMultiplier);
+            }
+
+            newPosition = new Vector3(mainCamera.transform.position.x + moveSpeedMultiplier * scrollSpeedTmp, mainCamera.transform.position.y, mainCamera.transform.position.z);
             mainCamera.transform.position = newPosition;
         }
 
         if (Input.mousePosition.y <= 25.0)
         {
-            newPosition = new Vector3(mainCamera.transform.position.x , mainCamera.transform.position.y - moveSpeedMultiplier * 0.25f, mainCamera.transform.position.z);
+            float scrollSpeedTmp = 0.5f;
+            if (Input.mousePosition.y > 1.0)
+            {
+                scrollSpeedTmp = (float)((1.0 / Input.mousePosition.y) * moveSpeedMultiplier);
+            }
+
+            newPosition = new Vector3(mainCamera.transform.position.x , mainCamera.transform.position.y - moveSpeedMultiplier * scrollSpeedTmp, mainCamera.transform.position.z);
             mainCamera.transform.position = newPosition;
         }
 
         if (Input.mousePosition.y >= mainCamera.pixelHeight - 25.0)
         {
-            newPosition = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y + moveSpeedMultiplier * 0.25f, mainCamera.transform.position.z);
+            float scrollSpeedTmp = 0.5f;
+            if (Input.mousePosition.y < mainCamera.pixelHeight - 1.0)
+            {
+                scrollSpeedTmp = (float)(1.0 / (mainCamera.pixelHeight - Input.mousePosition.y) * moveSpeedMultiplier);
+            }
+
+            newPosition = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y + moveSpeedMultiplier * scrollSpeedTmp, mainCamera.transform.position.z);
             mainCamera.transform.position = newPosition;
         }
 
