@@ -54,6 +54,9 @@ public class ScoutingUIScript : MonoBehaviour {
 
         levelDropdown.ClearOptions();
         levelDropdown.AddOptions(levelSelect);
+
+        levelDropdown.RefreshShownValue();
+        heroDropdown.RefreshShownValue();
     }
 
     public void UpdateSelection(int index)

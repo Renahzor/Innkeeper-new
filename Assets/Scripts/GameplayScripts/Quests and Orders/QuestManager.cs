@@ -91,7 +91,7 @@ public class QuestManager : MonoBehaviour {
             {
                 if (ls.locationName == locations[locationIndex].locationName)
                 {
-                    activeLocations[locationIndex].AddEnemyToLocation(objectiveIndex);
+                    ls.AddEnemyToLocation(objectiveIndex);
                     questObjectivesTextList.Add(objectives[objectiveIndex].objectiveDescription);
                     questWindow.UpdateDropdownText(questWindow.questObjectiveDropdown, questObjectivesTextList);
                     return;
